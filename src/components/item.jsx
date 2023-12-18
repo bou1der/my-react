@@ -2,7 +2,7 @@ import React from 'react';
 import '../index.scss';
 import ReactDOM from 'react-dom/client';
 
-function Item()
+function Item({prop})
 {
     return(
         <div className="item">

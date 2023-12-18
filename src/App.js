@@ -4,9 +4,14 @@ import React from 'react';
 
 function App() {
   const [NotesInfo, setNotes] = React.useState([])
-  function setInNotes(elem)
+  let NotesCache = [];
+  function setInNotes()
   {
-    setNotes(NotesInfo.concat(elem));
+    let newDate = [new Date().getDate(),new Date().getMonth() , new Date().getFullYear()];
+
+    setNotes(NotesInfo.title = NotesCache[0]);
+    setNotes(NotesInfo.text = NotesCache[1]);
+    setNotes(NotesInfo.date = newDate);
   }
   return (
     <div className="App">
@@ -21,7 +26,7 @@ function App() {
         </svg>
       </div>
       
-      {<Item/>}
+      {<Item />}
 
       <div className="form">
         <div className="form__checkbox">
@@ -29,10 +34,10 @@ function App() {
           <label for="add-checkbox" />
         </div>
         <div class="form__fields">
-          <input type="text" onChange={setInNotes()} placeholder="Название" className="input-title" />
-          <input type="text" placeholder="Введите текст..." className="input-text" />
+          <input type="text" onInput={(el) => NotesCache[0] = el.target.value} placeholder="Название" className="input-title" />
+          <input type="text" onInput={(el) => NotesCache[1] = el.target.value} placeholder="Введите текст..." className="input-text" />
         </div>
-        <svg height="32px" viewBox="0 0 512 512" width="32px">
+        <svg height="32px" viewBox="0 0 512 512" width="32px" onClick={setInNotes}>
           <g>
             <g>
               <g>
