@@ -1,7 +1,13 @@
 import './index.scss';
 import Item from './components/item.jsx';
+import React from 'react';
 
 function App() {
+  const [NotesInfo, setNotes] = React.useState([])
+  function setInNotes(elem)
+  {
+    setNotes(NotesInfo.concat(elem));
+  }
   return (
     <div className="App">
       <div className="top">
@@ -23,7 +29,7 @@ function App() {
           <label for="add-checkbox" />
         </div>
         <div class="form__fields">
-          <input type="text" placeholder="Название" className="input-title" />
+          <input type="text" onChange={setInNotes()} placeholder="Название" className="input-title" />
           <input type="text" placeholder="Введите текст..." className="input-text" />
         </div>
         <svg height="32px" viewBox="0 0 512 512" width="32px">
