@@ -4,12 +4,13 @@ import ReactDOM from 'react-dom/client';
 
 function Item({prop})
 {
+  console.log(prop)
     return(
         <div className="item">
         <input class="styled-checkbox" id="checkbox2" type="checkbox" value="value1" />
         <label for="checkbox2" />
         <div className="item__content">
-          <b>Это еще одна задача</b>
+          <b>{prop.title}</b>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ducimus
             reprehenderit suscipit.

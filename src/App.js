@@ -3,16 +3,24 @@ import Item from './components/item.jsx';
 import React from 'react';
 
 function App() {
-  const [NotesInfo, setNotes] = React.useState([])
-  let NotesCache = [];
-  function setInNotes()
-  {
-    let newDate = [new Date().getDate(),new Date().getMonth() , new Date().getFullYear()];
+  const [NotesArr, setNotes] = React.useState([])
 
-    setNotes(NotesInfo.title = NotesCache[0]);
-    setNotes(NotesInfo.text = NotesCache[1]);
-    setNotes(NotesInfo.date = newDate);
+  class DoElement{
+    constructor(id,title, text, date){
+      this.id = id;
+      this.title = title;
+      this.text = text;
+      this.date = date;
+    }
+    
+    showId (){
+
+    }
+
   }
+  let title;
+  let text;
+  
   return (
     <div className="App">
       <div className="top">
@@ -26,18 +34,21 @@ function App() {
         </svg>
       </div>
       
-      {<Item />}
+      {NotesArr.map((el)=>{
+        <Item prop={el} />
+
+      })}
 
       <div className="form">
         <div className="form__checkbox">
           <input class="styled-checkbox" id="add-checkbox" type="checkbox" value="value1" />
-          <label for="add-checkbox" />
+          <label for="add-checkbox"  onClick={()=> console.log(NotesArr)}/>
         </div>
         <div class="form__fields">
-          <input type="text" onInput={(el) => NotesCache[0] = el.target.value} placeholder="Название" className="input-title" />
-          <input type="text" onInput={(el) => NotesCache[1] = el.target.value} placeholder="Введите текст..." className="input-text" />
+          <input type="text" onInput={(el) => title = el.target.value}  placeholder="Название" className="input-title" />
+          <input type="text" onInput={(el) => text = el.target.value}  placeholder="Введите текст..." className="input-text" />
         </div>
-        <svg height="32px" viewBox="0 0 512 512" width="32px" onClick={setInNotes}>
+        <svg height="32px" onClick={() => setNotes([...NotesArr,new DoElement(NotesArr.length + 1,title,text, [new Date().getDate(),new Date().getMonth(),new Date().getFullYear()])])} viewBox="0 0 512 512" width="32px">
           <g>
             <g>
               <g>
